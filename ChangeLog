@@ -1,0 +1,153 @@
+
+2015-04-22: 1.63
+
+	. Bugfix fixes integer overflow problems with dendrograms that have
+	  more than aout 46k singletons
+
+	. Bugfix makes handling externalBranchSplitFnc more robust
+
+	. ExternalBranchSplitFnc can now be supplied as a simple vector of
+	  function names, rather than a list.
+
+	. Fractional deepSplit is now accepted and will lead to linearly
+	  interpolated settings of minGap and maxCoreScatter
+
+2014-05-07: 1.62
+
+	. New arguments minSplitHeight and minSplitAbsHeight allow the user to
+	  specify a height below which branches will automatically be merged.
+
+2013-11-22: 1.61
+
+	. New argument externalSplitFncNeedsDistance can prevent unnecessary
+	  passing of the dissimilarity (distance) matrix to the external split
+	  functions (if they are used at all)
+
+2013-11-19: 1.60-3
+
+	. A separate error/bug that could result in incorrectly interpreted
+	  cluster assignment fixed
+
+2013-11-16: 1.60-2
+
+	. Occasional error fixed that occurred when only one cluster is
+	  present
+
+2013-11-03: 1.60-1
+
+	. Occasional error crash in the function fixed (reported by Axel Kohei
+	  Glaubitz).
+
+2013-08-20: 1.60
+
+	. Major clean-up: all expr- and stability-related merging criteria are
+	  removed. Instead, these should be supplied via the
+	  externalBranchSplitFnc. This cleans up the dynamic tree cut and
+	  puts the correlation network-specific criteria where they belong,
+	  namely into the WGCNA package.
+
+	. Multiple externalBranchSplitFnc can be given.
+
+	. Argument externalSplitThreshold is now called minExternalSplit.
+
+
+2013-07-24: 1.55
+
+	. New arguments externalBranchSplitFnc, externalSplitThreshold, and 
+	  externalSplitOptions let the users supply their own branch merging 
+	  criterion for cutreeHybrid.
+
+2011-01-26: 1.51
+
+	. Minor speed and efficiency gain via internal re-structuring
+	. Bug fix: useMedoids = TRUE spurious error fixed
+
+2010-12-10: 1.50
+
+	. Major new functionality: branch merging criteria expanded to include: 
+	    1. module split (a measure of separation between the two branches),
+	    2. correlation of eigennodes, 
+	    3. similarity measure based on clustering of re-sampled data
+	  Criteria 1 and 2 are only applicable to correlation networks.
+	  Criterion 3 assumes that a stability study has been carried out
+	  before the final module identification. All three new criteria are
+	  optional and ignored if the requisite inputs are not supplied.
+
+2009-11-22: 1.21
+
+	. new function merge2Clusters
+
+2009-01-29: 1.20
+
+	. Support for cluster trimming has been dropped
+	. New functionality: PAM stage can now optionally respect the dendrogram. 
+	  If this option is set, for each object PAM stage will only consider those
+	  clusters that are on the same branch as the object being PAMed. In
+	  other words, an object can only be asigned by PAM to one of the clusters lying
+	  below the object on the branch on which the object is merged.
+	  Intuitively, this should produce a label assignment that is more compatible
+	  with the dendrogram. It will also prevent assignment of far outlying
+	  objects, resulting in more unassigned objects and cleaner, tighter
+	  clusters.
+
+2008-06-12: 
+
+	. Changed verbose output from stage 1,2 to Tree Cut, PAM stage
+	. distM is only modified (copied) if necessary
+
+2008-06-03: 1.12
+
+	. labelUnlabeled is now deprecated and replaced by (renamed to) pamStage.
+	. deepSplit range extended to 0 through 4
+
+2008-04-03: 
+
+	cleanup: function .assignModuleColor commented out to remove a R CMD
+	check warning.
+
+2008-03-12: 1.11-3
+
+	another bug in interpretation of deepSplit fixed; in particular, the default now works.
+
+2008-03-07: 1.11-2
+
+	bug in interpretation of deepSplit fixed
+
+2008-03-05: 1.11-1
+
+	dynamicHybrid: When number of merges below the cut is smaller than minClusterSize, simply return
+	with all labels=0 instead of throwing an error.
+
+2008-02-19: 1.11
+
+	change default cutHeight from max(dendro$height) to 99% of the range
+	of between maximum and 5th percentile (from minimum) of dendro$height
+
+	change in printFlush: use cat, not print to get rid of the [1] " leading the output
+
+2008-02-16: 1.10-02
+
+	cutreeDynamic: if method=="hybrid" and distM not given, issue a warning and default to method="tree"
+
+2007-12-11: 1.10
+
+	cutreeHybrid: distM is a mandatory parameter now (no more NULL
+	default) since it is used in stage 1 as well.
+
+2007-11-22: 1.09
+
+	cutreeDynamicTree: bug where the last element on the dendrogram remained unlabeled is fixed by
+	Bin Zhang.
+
+2007-11-13: 1.09
+
+	Changes in Dynamic Tree: minimum significant forward runlength is now
+	set as a fraction (1/3)+1 of the minimum cluster size;
+	minAttachModuleSize is now 2*minModuleSize instead of a hardcoded
+	number 100.
+
+2007-09-17
+
+	Updated URL in description to http://www.genetics.ucla.edu/labs/horvath/CoexpressionNetwork/BranchCutting/
+
+
