@@ -4,7 +4,7 @@
 #
 Name     : R-dynamicTreeCut
 Version  : 1.63.1
-Release  : 21
+Release  : 22
 URL      : https://cran.r-project.org/src/contrib/dynamicTreeCut_1.63-1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/dynamicTreeCut_1.63-1.tar.gz
 Summary  : Methods for Detection of Clusters in Hierarchical Clustering
